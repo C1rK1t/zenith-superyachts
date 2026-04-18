@@ -281,6 +281,121 @@
       margin: 0;
     }
 
+    .zs-carousel-shell {
+      margin-top: 36px;
+    }
+
+    .zs-carousel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .zs-carousel-title {
+      color: #f4ead7;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .zs-carousel-subtitle {
+      color: rgba(255,255,255,0.68);
+      font-size: 14px;
+    }
+
+    .zs-carousel-controls {
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .zs-carousel-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.04);
+      color: #f4ead7;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .zs-carousel-btn:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    .zs-carousel-viewport {
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .zs-carousel-track {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      padding-bottom: 8px;
+    }
+
+    .zs-carousel-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .zs-carousel-card {
+      flex: 0 0 calc(33.333% - 11px);
+      min-width: calc(33.333% - 11px);
+      scroll-snap-align: start;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 22px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.04);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    }
+
+    .zs-carousel-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .zs-carousel-card {
+      scroll-snap-align: start;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 22px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.04);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    }
+
+    .zs-carousel-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .zs-carousel-card-body {
+      padding: 18px;
+    }
+
+    .zs-carousel-card-title {
+      color: #f4ead7;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .zs-carousel-card-text {
+      color: rgba(255,255,255,0.7);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .zs-carousel-full-width {
+      grid-column: 1 / -1;
+    }
+
     .zs-regions-section { background: #07131e; }
 
     .zs-region-card {
@@ -324,7 +439,19 @@
       color: rgba(255,255,255,0.5);
       font-size: 14px;
     }
+    @media (max-width: 1024px) {
+      .zs-carousel-card {
+        flex: 0 0 calc(50% - 8px);
+        min-width: calc(50% - 8px);
+      }
+    }
 
+    @media (max-width: 820px) {
+      .zs-carousel-card {
+        flex: 0 0 100%;
+        min-width: 100%;
+      }
+    }
     @media (max-width: 1024px) {
       .zs-hero-grid,
       .zs-regions-grid,
@@ -478,6 +605,64 @@
             <p>Documentation support, compliance tracking, and regulatory coordination across jurisdictions.</p>
           </div>
         </div>
+        <div class="zs-carousel-shell">
+          <div class="zs-carousel-header">
+            <div>
+              <div class="zs-carousel-title">Management in action</div>
+              <div class="zs-carousel-subtitle">
+                Use your own images here to illustrate technical, crew, charter, and compliance work.
+              </div>
+            </div>
+            <div class="zs-carousel-controls">
+              <button class="zs-carousel-btn" type="button" data-carousel-prev="services-carousel" aria-label="Previous services image">&#8249;</button>
+              <button class="zs-carousel-btn" type="button" data-carousel-next="services-carousel" aria-label="Next services image">&#8250;</button>
+            </div>
+          </div>
+
+          <div class="zs-carousel-viewport">
+            <div class="zs-carousel-track" id="services-carousel">
+              <article class="zs-carousel-card">
+                <img src="images/PI_OnTheMove.jpg" alt="Superyacht under operational management" />
+                <div class="zs-carousel-card-body">
+                  <div class="zs-carousel-card-title">Operational Oversight</div>
+                  <div class="zs-carousel-card-text">
+                    A strong visual placeholder for live yacht management, voyage support, and practical coordination.
+                  </div>
+                </div>
+              </article>
+
+              <article class="zs-carousel-card">
+                <img src="images/PI_OnTheMove.jpg" alt="Technical management placeholder image" />
+                <div class="zs-carousel-card-body">
+                  <div class="zs-carousel-card-title">Technical Management</div>
+                  <div class="zs-carousel-card-text">
+                    Replace with refit, engineering, maintenance, or machinery-room imagery when available.
+                  </div>
+                </div>
+              </article>
+
+              <article class="zs-carousel-card">
+                <img src="images/PI_OnTheMove.jpg" alt="Crew management placeholder image" />
+                <div class="zs-carousel-card-body">
+                  <div class="zs-carousel-card-title">Crew Management</div>
+                  <div class="zs-carousel-card-text">
+                    Ideal for crew logistics, onboard standards, rotations, and support imagery.
+                  </div>
+                </div>
+              </article>
+
+              <article class="zs-carousel-card">
+                <img src="images/PI_OnTheMove.jpg" alt="Compliance placeholder image" />
+                <div class="zs-carousel-card-body">
+                  <div class="zs-carousel-card-title">Compliance &amp; Documentation</div>
+                  <div class="zs-carousel-card-text">
+                    A place for documentation, certification, safety drills, and regulatory process visuals.
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -499,46 +684,88 @@
           <div class="zs-region-card">Global Operations</div>
           <div class="zs-region-card">Global Reach</div>
         </div>
+        <div class="zs-carousel-shell zs-carousel-full-width">
+          <div class="zs-carousel-header">
+            <div>
+              <div class="zs-carousel-title">Cruising grounds &amp; regional capability</div>
+              <div class="zs-carousel-subtitle">
+                Showcase anchorages, cruising areas, destination support, and local operating knowledge.
+              </div>
+            </div>
+            <div class="zs-carousel-controls">
+              <button class="zs-carousel-btn" type="button" data-carousel-prev="regions-carousel" aria-label="Previous regions image">&#8249;</button>
+              <button class="zs-carousel-btn" type="button" data-carousel-next="regions-carousel" aria-label="Next regions image">&#8250;</button>
+            </div>
+          </div>
+
+          <div class="zs-carousel-viewport">
+            <div class="zs-carousel-track" id="regions-carousel">
+              <article class="zs-carousel-card">
+                <img src="images/PI_OnTheMove.jpg" alt="Philippine cruising grounds placeholder image" />
+                <div class="zs-carousel-card-body">
+                  <div class="zs-carousel-card-title">Philippine Cruising Grounds</div>
+                  <div class="zs-carousel-card-text">
+                    Replace with iconic locations, hidden anchorages, or destination images from your operating areas.
+                  </div>
+                </div>
+              </article>
+
+              <article class="zs-carousel-card">
+                <img src="images/PI_OnTheMove.jpg" alt="Anchorage expertise placeholder image" />
+                <div class="zs-carousel-card-body">
+                  <div class="zs-carousel-card-title">Anchorage Knowledge</div>
+                  <div class="zs-carousel-card-text">
+                    A useful place for safe anchorage, approach, and regional support imagery.
+                  </div>
+                </div>
+              </article>
+
+              <article class="zs-carousel-card">
+                <img src="images/PI_OnTheMove.jpg" alt="Regional logistics placeholder image" />
+                <div class="zs-carousel-card-body">
+                  <div class="zs-carousel-card-title">Regional Logistics</div>
+                  <div class="zs-carousel-card-text">
+                    Show provisioning, clearances, marina support, or local supplier coordination visuals.
+                  </div>
+                </div>
+              </article>
+
+              <article class="zs-carousel-card">
+                <img src="images/PI_OnTheMove.jpg" alt="Global operations placeholder image" />
+                <div class="zs-carousel-card-body">
+                  <div class="zs-carousel-card-title">Global Capability</div>
+                  <div class="zs-carousel-card-text">
+                    Use this to balance Philippine focus with images reflecting your wider global operations.
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>        
       </div>
     </section>
 
     <section id="contact" class="zs-section zs-contact-section">
       <div class="zs-container">
         <div class="zs-section-label">Contact</div>
-        <h2 class="zs-h2">Ready for your final contact details</h2>
+        <h2 class="zs-h2">Professional and discreet communication</h2>
+
         <p class="zs-p">
-          For now this section acts as a placeholder. Later we can add your preferred enquiry
-          email, office details, WhatsApp link, charter management contact options, and a
-          simple contact form.
+          For enquiries regarding yacht management, operations, or regional support in the Philippines and beyond, please contact:
         </p>
-        <div class="zs-contact-box">contact@zenithsuperyachts.com</div>
+
+        <p class="zs-p" style="font-weight:700; color:#f4ead7; margin-top:10px;">
+          Captain Allen Sutton
+        </p>
+
+        <div class="zs-contact-box">allen@zenithsuperyachts.com</div>
+
+        <p class="zs-p" style="margin-top:18px; font-size:14px; opacity:0.7;">
+          All enquiries are handled with discretion and professionalism.
+        </p>
       </div>
     </section>
 
-    <section class="zs-section" aria-label="Manual test checklist">
-      <div class="zs-container">
-        <div class="zs-section-label">Checks</div>
-        <h2 class="zs-h2">Manual test checklist</h2>
-        <div class="zs-test-grid">
-          <div class="zs-test-card">
-            <div class="zs-test-title">Test 1</div>
-            <p>Header navigation renders four links and anchors scroll to matching sections.</p>
-          </div>
-          <div class="zs-test-card">
-            <div class="zs-test-title">Test 2</div>
-            <p>Logo loads from images/logo.png and the yacht photo loads from images/PI_OnTheMove.jpg.</p>
-          </div>
-          <div class="zs-test-card">
-            <div class="zs-test-title">Test 3</div>
-            <p>Services section displays four management cards.</p>
-          </div>
-          <div class="zs-test-card">
-            <div class="zs-test-title">Test 4</div>
-            <p>Region cards render four items and stack correctly on smaller screens.</p>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer class="zs-footer">
@@ -547,5 +774,40 @@
       <div>Superyacht Management • Philippines Focus • Global Operations</div>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      function moveCarousel(trackId, direction) {
+        var track = document.getElementById(trackId);
+        if (!track) return;
+
+        var card = track.querySelector('.zs-carousel-card');
+        if (!card) return;
+
+        var cardWidth = card.getBoundingClientRect().width;
+        var style = window.getComputedStyle(track);
+        var gap = parseFloat(style.columnGap || style.gap || 16);
+        var amount = cardWidth + gap;
+
+        track.scrollBy({
+          left: amount * direction,
+          behavior: 'smooth'
+        });
+      }
+
+      document.querySelectorAll('[data-carousel-prev]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          moveCarousel(button.getAttribute('data-carousel-prev'), -1);
+        });
+      });
+
+      document.querySelectorAll('[data-carousel-next]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          moveCarousel(button.getAttribute('data-carousel-next'), 1);
+        });
+      });
+    })();
+  </script>
+
 </body>
 </html>
