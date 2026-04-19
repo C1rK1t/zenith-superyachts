@@ -18,8 +18,12 @@
       color: #ffffff;
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.6;
+      overflow-x: hidden;
+      overflow-x: clip;
     }
     a { color: inherit; text-decoration: none; }
+    .zs-section[id],
+    .zs-section-band[id] { scroll-margin-top: 120px; }
 
     .zs-container {
       width: min(calc(100% - 48px), 1200px);
@@ -83,9 +87,16 @@
 
     .zs-nav {
       display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items: center;
       gap: 24px;
       color: rgba(255,255,255,0.75);
       font-size: 14px;
+    }
+
+    .zs-nav a {
+      transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
     }
 
     .zs-nav a:hover { color: #f4ead7; }
@@ -97,6 +108,15 @@
       display: grid;
       gap: 56px;
       align-items: center;
+    }
+
+    .zs-hero-grid > *,
+    .zs-regions-grid > *,
+    .zs-about-grid > *,
+    .zs-services-grid > *,
+    .zs-mini-grid > *,
+    .zs-region-cards > * {
+      min-width: 0;
     }
 
     .zs-hero-grid,
@@ -288,10 +308,13 @@
 
     .zs-carousel-shell {
       margin-top: 36px;
+      min-width: 0;
+      max-width: 100%;
     }
 
     .zs-carousel-header {
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
       gap: 16px;
@@ -333,6 +356,8 @@
     .zs-carousel-viewport {
       overflow: hidden;
       width: 100%;
+      min-width: 0;
+      max-width: 100%;
     }
 
     .zs-carousel-track {
@@ -343,6 +368,9 @@
       scroll-snap-type: x mandatory;
       scrollbar-width: none;
       padding-bottom: 8px;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
     }
 
     .zs-carousel-track::-webkit-scrollbar {
@@ -382,6 +410,7 @@
 
     .zs-carousel-card-body {
       padding: 18px;
+      min-width: 0;
     }
 
     .zs-carousel-card-title {
@@ -429,6 +458,13 @@
       color: #f4ead7;
       font-size: 14px;
       margin-top: 10px;
+      max-width: 100%;
+    }
+
+    .zs-contact-box a {
+      max-width: 100%;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
 
     .zs-footer {
@@ -471,7 +507,35 @@
     }
 
     @media (max-width: 820px) {
-      .zs-nav { display: none; }
+      .zs-section[id],
+      .zs-section-band[id] { scroll-margin-top: 180px; }
+
+      .zs-brand-title {
+        font-size: 16px;
+        letter-spacing: 0.05em;
+      }
+
+      .zs-brand-subtitle {
+        font-size: 11px;
+        letter-spacing: 0.2em;
+      }
+
+      .zs-nav {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 12px;
+        font-size: 13px;
+      }
+
+      .zs-nav a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 40px;
+        padding: 8px 14px;
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 999px;
+        background: rgba(255,255,255,0.04);
+      }
 
       .zs-hero-grid,
       .zs-regions-grid,
@@ -492,6 +556,18 @@
         flex-direction: column;
         align-items: flex-start;
       }
+
+      .zs-carousel-header {
+        align-items: flex-start;
+      }
+
+      .zs-contact-box {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        padding-left: 16px;
+        padding-right: 16px;
+      }
     }
   </style>
 </head>
@@ -499,14 +575,14 @@
   <header class="zs-header">
     <div class="zs-container zs-header-inner">
       <div class="zs-brand">
-        <img class="zs-logo" src="images/TransLogo.png" alt="Zenith Solutions logo" />
+        <img class="zs-logo" src="images/TransLogo.png" alt="Zenith Solutions logo" width="450" height="450" decoding="async" />
         <div>
           <div class="zs-brand-title">ZENITH SOLUTIONS LIMITED</div>
           <div class="zs-brand-subtitle">Superyacht Management</div>
         </div>
       </div>
 
-      <nav class="zs-nav">
+      <nav class="zs-nav" aria-label="Primary navigation">
         <a href="#about">About</a>
         <a href="#services">Services</a>
         <a href="#regions">Regions</a>
@@ -537,8 +613,8 @@
 
         <div class="zs-panel-outer">
           <div class="zs-panel-inner">
-            <img class="zs-logo-hero" src="images/TransLogo.png" alt="Zenith Solutions logo" />
-            <img class="zs-photo" src="images/web_PI_palau_moving_with_tender.jpg" alt="Zenith Solutions superyacht underway in the Palau" />
+            <img class="zs-logo-hero" src="images/TransLogo.png" alt="Zenith Solutions logo" width="450" height="450" decoding="async" />
+            <img class="zs-photo" src="images/web_PI_palau_moving_with_tender.jpg" alt="Zenith Solutions superyacht underway in the Palau" width="1600" height="900" fetchpriority="high" decoding="async" />
             <p class="zs-photo-caption">
               Zenith Solutions delivers experienced management support for high-quality yachts.
             </p>
@@ -674,7 +750,7 @@
           <div class="zs-carousel-viewport">
             <div class="zs-carousel-track" id="services-carousel">
               <article class="zs-carousel-card">
-                <img src="images/web_PI_LSE_shipyard.JPG" alt="Princess Iolanthe in LSE, Labuan" />
+                <img src="images/web_PI_LSE_shipyard.JPG" alt="Princess Iolanthe in LSE, Labuan" width="1600" height="900" loading="lazy" decoding="async" />
                 <div class="zs-carousel-card-body">
                   <div class="zs-carousel-card-title">Survey Management</div>
                   <div class="zs-carousel-card-text">
@@ -684,7 +760,7 @@
               </article>
 
               <article class="zs-carousel-card">
-                <img src="images/web_Tango_new_paint.jpg" alt="Tango 5 after repaint" />
+                <img src="images/web_Tango_new_paint.jpg" alt="Tango 5 after repaint" width="1600" height="900" loading="lazy" decoding="async" />
                 <div class="zs-carousel-card-body">
                   <div class="zs-carousel-card-title">Refit Management</div>
                   <div class="zs-carousel-card-text">
@@ -694,7 +770,7 @@
               </article>
 
               <article class="zs-carousel-card">
-                <img src="images/web_PI_tow_ops.jpg" alt="Towing operations safety management" />
+                <img src="images/web_PI_tow_ops.jpg" alt="Towing operations safety management" width="1600" height="900" loading="lazy" decoding="async" />
                 <div class="zs-carousel-card-body">
                   <div class="zs-carousel-card-title">Operational Oversight</div>
                   <div class="zs-carousel-card-text">
@@ -704,7 +780,7 @@
               </article>
 
               <article class="zs-carousel-card">
-                <img src="images/web_kanga_ops.jpg" alt="Organisation of external contractors" />
+                <img src="images/web_kanga_ops.jpg" alt="Organisation of external contractors" width="1600" height="900" loading="lazy" decoding="async" />
                 <div class="zs-carousel-card-body">
                   <div class="zs-carousel-card-title">Technical Management</div>
                   <div class="zs-carousel-card-text">
@@ -714,7 +790,7 @@
               </article>
 
               <article class="zs-carousel-card">
-                <img src="images/web_PI_red_ensign.jpg" alt="Crew management placeholder image" />
+                <img src="images/web_PI_red_ensign.jpg" alt="Crew management placeholder image" width="1600" height="900" loading="lazy" decoding="async" />
                 <div class="zs-carousel-card-body">
                   <div class="zs-carousel-card-title">Crew Management</div>
                   <div class="zs-carousel-card-text">
@@ -724,7 +800,7 @@
               </article>
 
               <article class="zs-carousel-card">
-                <img src="images/web_PI_red_ensign.jpg" alt="Compliance placeholder image" />
+                <img src="images/web_PI_red_ensign.jpg" alt="Compliance placeholder image" width="1600" height="900" loading="lazy" decoding="async" />
                 <div class="zs-carousel-card-body">
                   <div class="zs-carousel-card-title">Compliance &amp; Documentation</div>
                   <div class="zs-carousel-card-text">
@@ -776,17 +852,17 @@
           <div class="zs-carousel-viewport">
             <div class="zs-carousel-track" id="regions-carousel">
               <article class="zs-carousel-card">
-                <img src="images/web_coron_baracuda_lake.JPG" alt="Coron Island in the Philippines. Baracuda Lake" />
+                <img src="images/web_coron_barracuda_lake.JPG" alt="Coron Island in the Philippines. Baracuda Lake" width="1600" height="900" loading="lazy" decoding="async" />
                 <div class="zs-carousel-card-body">
                   <div class="zs-carousel-card-title">Philippine Cruising Grounds</div>
                   <div class="zs-carousel-card-text">
-                     Baracuda Lake. Coron Island, Philippines.
+                     Barracuda Lake. Coron Island, Philippines.
                   </div>
                 </div>
               </article>
 
               <article class="zs-carousel-card">
-                <img src="images/web_elnido_town.jpg" alt="El Nido Town in the Philippines" />
+                <img src="images/web_elnido_town.jpg" alt="El Nido Town in the Philippines" width="1920" height="1080" loading="lazy" decoding="async" />
                 <div class="zs-carousel-card-body">
                   <div class="zs-carousel-card-title">Philippine Cruising Grounds</div>
                   <div class="zs-carousel-card-text">
@@ -796,7 +872,7 @@
               </article>
 
               <article class="zs-carousel-card">
-                <img src="images/web_apo_reef_island_01.JPG" alt="Apo Reef in the Philippines" />
+                <img src="images/web_apo_reef_island_01.JPG" alt="Apo Reef in the Philippines" width="1600" height="900" loading="lazy" decoding="async" />
                 <div class="zs-carousel-card-body">
                   <div class="zs-carousel-card-title">Philippine Cruising Grounds</div>
                   <div class="zs-carousel-card-text">
@@ -806,7 +882,7 @@
               </article>
 
               <article class="zs-carousel-card">
-                <img src="images/web_PI_elnido_anchorage_01.JPG" alt="El Nido Ancorage in the Philippines" />
+                <img src="images/web_PI_elnido_anchorage_01.JPG" alt="El Nido Anchorage in the Philippines" width="1600" height="900" loading="lazy" decoding="async" />
                 <div class="zs-carousel-card-body">
                   <div class="zs-carousel-card-title">Anchorage Knowledge</div>
                   <div class="zs-carousel-card-text">
@@ -816,7 +892,7 @@
               </article>
 
               <article class="zs-carousel-card">
-                <img src="images/web_PI_red_ensign.jpg" alt="Regional logistics placeholder image" />
+                <img src="images/web_PI_red_ensign.jpg" alt="Regional logistics placeholder image" width="1600" height="900" loading="lazy" decoding="async" />
                 <div class="zs-carousel-card-body">
                   <div class="zs-carousel-card-title">Regional Logistics</div>
                   <div class="zs-carousel-card-text">
@@ -826,7 +902,7 @@
               </article>
 
               <article class="zs-carousel-card">
-                <img src="images/web_sutraharbour_01.JPG" alt="Operations outside of the Philippines" />
+                <img src="images/web_sutraharbour_01.JPG" alt="Operations outside of the Philippines" width="1600" height="900" loading="lazy" decoding="async" />
                 <div class="zs-carousel-card-body">
                   <div class="zs-carousel-card-title">Global Capability</div>
                   <div class="zs-carousel-card-text">
