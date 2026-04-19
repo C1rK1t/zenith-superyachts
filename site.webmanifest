@@ -1,0 +1,11 @@
+{
+  "name": "Zenith Solutions",
+  "short_name": "Zenith",
+  "icons": [
+    { "src": "/images/favicon-32.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "/images/favicon-16.png", "sizes": "16x16", "type": "image/png" }
+  ],
+  "theme_color": "#081826",
+  "background_color": "#081826",
+  "display": "standalone"
+}
